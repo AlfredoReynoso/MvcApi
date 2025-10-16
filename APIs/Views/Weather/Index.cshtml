@@ -1,0 +1,38 @@
+﻿@model APIs.Models.ViewModel.WeatherModel
+
+
+@{
+    ViewBag.Title = "Clima";
+}
+
+@ViewBag.Mensaje
+
+<h2>Clima</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.TextBoxFor(model => Model.Name)
+    <input type="submit" value="Cargar" />
+}
+
+
+@if (Model != null)
+{
+    <h2>Clima en @Model.Name</h2>
+    <p>Temperatura @Model.Main.Temp °C</p>
+    <p>Humedad: @Model.Main.Humidity %</p>
+
+    foreach (var item in Model.Weather)
+    {
+        <p>Estado: @item.Main</p>
+        <p>Descripcion: @item.Description</p>
+        <img src="https://openweathermap.org/img/wn/{@item.Icon}.png" alt="icono clima" />
+    }
+
+}
+
+
+
+
+
+
