@@ -1,0 +1,32 @@
+﻿@model IEnumerable<APIs.Models.ViewModel.Paises.Country>
+
+@{
+    ViewBag.Title = "NombrePaises";
+}
+
+<h2>NombrePaises</h2>
+
+<table class="table">
+    <tr>
+        <th>Common</th>
+        <th>Official</th>
+        <th>Common</th>
+        <th>Official</th>
+        <th>Acciones</th>
+    </tr>
+@foreach (var item in Model) {
+    <tr>
+        <td>@item.Name.Common</td>
+        <td>@item.Name.Official</td>
+        <td>@item.Name.nativeName["spa"].Common</td>
+        <td>@item.Name.nativeName["spa"].Official</td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>
+

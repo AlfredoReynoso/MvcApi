@@ -1,0 +1,25 @@
+﻿
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@*  *@
+
+<div class="card shadow-sm p-4" style="max-width:520px; width:100%;">
+
+    @using (Html.BeginForm("NombrePaises", "Countries", FormMethod.Post, new { @class = "simpleForm" }))
+    {
+        <div class="mb-3">
+            @Html.DropDownList("ddlOpciones", ViewBag.ddlOpciones as IEnumerable<SelectListItem>, "Seleccione una opcion", new { @class = "form-control", onchange = "opcionesBusqueda(this.value)" })
+            @Html.TextBox("nombrePais", "", new { @class = "form-control", placeholder = "Escriba el nombre de un país", style = "display:none;" })
+            @Html.TextBox("codigoPais", "", new { @class = "form-control", placeholder = "Codigo del país", display = "false", style = "display:none;" })
+            @Html.TextBox("langPais", "", new { @class = "form-control", placeholder = "Lenguaje del país", display = "false", style = "display:none;" })
+        </div>
+        <div class="d-grid">
+            <button type="submit" id="btnEnviar" class="btn btn-primary btn-lg" style="display:none">Enviar</button>
+        </div>
+    }
+</div>
+
+<script src="~/Scripts/restcountries.js"></script>
